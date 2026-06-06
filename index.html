@@ -1,131 +1,205 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaiserslautern Rehberi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaiserslautern Rehberi</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f5f5;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #222;
+    }
 
-        header {
-            background-color: #660033;
-            color: white;
-            text-align: center;
-            padding: 40px;
-        }
+    header {
+  height: 300px;
 
-        nav {
-            background-color: #444;
-            padding: 15px;
-            text-align: center;
-        }
+  background-image: url("images/klimage.png");
+  background-size: cover;
+  background-position: center;
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-        }
+  color: white;
+  text-align: center;
 
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 30px auto;
-        }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+    header h1 {
+  font-size: 4rem;
+  margin: 0;
+}
 
-        h2 {
-            color: #660033;
-        }
+header p {
+  font-size: 1.4rem;
+}
 
-        footer {
-            background-color: #660033;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-        }
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
 
-        ul {
-            line-height: 1.8;
-        }
-    </style>
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .choice-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .choice-card {
+      background-color: white;
+      width: 280px;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: 0.2s;
+    }
+
+    .choice-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .choice-card h2 {
+      color: #660033;
+    }
+
+    .options {
+      display: none;
+      margin-top: 35px;
+    }
+
+    .options.active {
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .info-card {
+      background-color: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .info-card h3 {
+      color: #660033;
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
-    <h1>Kaiserslautern'a hosgeldiniz</h1>
-    <p>Şehre ilk geldiğinizde ihtiyaç duyacağınız temel bilgiler</p>
+  <h1>Kaiserslautern Rehberi</h1>
+  <p>Yeni gelenler için pratik yol haritası</p>
 </header>
 
-<nav>
-    <a href="#ilkadim">İlk Adımlar</a>
-    <a href="#ulasim">Ulaşım</a>
-    <a href="#alisveris">Alışveriş</a>
-    <a href="#almanca">Almanca</a>
-</nav>
+<main>
 
-<div class="container">
+  <div class="intro">
+    <h2>Başlamadan önce...</h2>
+    <p>Lütfen durumunu seç:</p>
+  </div>
 
-    <div class="card" id="ilkadim">
-        <h2>📋 İlk Yapılması Gerekenler</h2>
-        <ul>
-            <li>Anmeldung yaptırın.</li>
-            <li>Krankenkasse seçin.</li>
-            <li>Banka hesabı açın.</li>
-            <li>SIM kart alın.</li>
-            <li>Deutschlandticket başvurusu yapın.</li>
-        </ul>
+  <div class="choice-container">
+    <div class="choice-card" onclick="showOptions('coming')">
+      <h2>🚆 KL'ye geleceğim</h2>
+      <p>Henüz gelmedim, hazırlık yapıyorum.</p>
     </div>
 
-    <div class="card" id="ulasim">
-        <h2>🚌 Ulaşım</h2>
-        <p>
-            Kaiserslautern'de ulaşım çoğunlukla otobüs ve trenlerle sağlanır.
-            Deutschlandticket ile Almanya genelinde birçok toplu taşıma aracını kullanabilirsiniz.
-        </p>
+    <div class="choice-card" onclick="showOptions('here')">
+      <h2>📍 KL'deyim</h2>
+      <p>Kaiserslautern'e geldim, ne yapacağımı öğrenmek istiyorum.</p>
     </div>
+  </div>
 
-    <div class="card" id="alisveris">
-        <h2>🛒 Alışveriş</h2>
-        <ul>
-            <li>Lidl</li>
-            <li>Aldi</li>
-            <li>Kaufland</li>
-            <li>Edeka</li>
-            <li>Türk Marketleri</li>
-        </ul>
+  <section id="coming" class="options">
+    <h2>KL'ye gelmeden önce</h2>
+    <div class="grid">
+      <div class="info-card">
+        <h3>🏠 Ev bulma</h3>
+        <p>WG, Wohnung, Kaution ve kira süreci hakkında bilgiler.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>📄 Gerekli belgeler</h3>
+        <p>Pasaport, vize, diploma, sigorta ve önemli evraklar.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>💰 İlk ay bütçesi</h3>
+        <p>Kira, depozito, ulaşım, market ve telefon giderleri.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🇩🇪 Temel Almanca</h3>
+        <p>İlk günlerde işine yarayacak basit Almanca cümleler.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="card" id="almanca">
-        <h2>💬 Faydalı Almanca Cümleler</h2>
+  <section id="here" class="options">
+    <h2>KL'deysen ilk yapman gerekenler</h2>
+    <div class="grid">
+      <div class="info-card">
+        <h3>📋 Anmeldung</h3>
+        <p>Adres kaydı için Bürgercenter randevusu ve gerekli belgeler.</p>
+      </div>
 
-        <p><b>Ich bin neu in Kaiserslautern.</b><br>
-        Kaiserslautern'e yeni geldim.</p>
+      <div class="info-card">
+        <h3>🏥 Krankenkasse</h3>
+        <p>Sağlık sigortası seçimi ve başvuru süreci.</p>
+      </div>
 
-        <p><b>Ich möchte mich anmelden.</b><br>
-        Anmeldung yaptırmak istiyorum.</p>
+      <div class="info-card">
+        <h3>🏦 Banka hesabı</h3>
+        <p>Maaş, kira ve resmi işlemler için banka hesabı açma.</p>
+      </div>
 
-        <p><b>Können Sie mir helfen?</b><br>
-        Bana yardımcı olabilir misiniz?</p>
+      <div class="info-card">
+        <h3>🚌 Ulaşım</h3>
+        <p>Otobüs, tren, Deutschlandticket ve şehir içi ulaşım.</p>
+      </div>
     </div>
+  </section>
 
-</div>
+</main>
 
 <footer>
-    © 2026 Kaiserslautern Rehberi
+  © 2026 Kaiserslautern Rehberi
 </footer>
+
+<script>
+  function showOptions(choice) {
+    document.getElementById("coming").classList.remove("active");
+    document.getElementById("here").classList.remove("active");
+
+    document.getElementById(choice).classList.add("active");
+  }
+</script>
 
 </body>
 </html>
